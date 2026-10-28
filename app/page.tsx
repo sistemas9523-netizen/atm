@@ -12,6 +12,9 @@ import {
   History,
   Lightbulb,
   LoaderCircle,
+  GraduationCap,
+  UserRound,
+  UsersRound,
   RotateCcw,
   Sparkles,
   WalletCards,
@@ -134,6 +137,26 @@ export default function Page() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row"><Button type="button" onClick={calculate} disabled={isCalculating} className="h-12 flex-1 rounded-xl bg-[#1261b6] font-bold tracking-wide text-white shadow-lg shadow-blue-600/20 hover:bg-[#0d4d94]">{isCalculating ? <LoaderCircle className="animate-spin" data-icon="inline-start" aria-hidden="true" /> : <Sparkles data-icon="inline-start" aria-hidden="true" />} {isCalculating ? 'CALCULANDO...' : 'CALCULAR RETIRO'}</Button><Button type="button" variant="outline" onClick={clear} className="h-12 rounded-xl border-slate-200 px-5 text-slate-600"><Eraser data-icon="inline-start" aria-hidden="true" /> LIMPIAR</Button></div>
           </section>
         </div>
+
+        <section className="mb-8 rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8" aria-labelledby="project-info-title">
+          <div className="mb-6 flex items-start gap-3">
+            <div className="rounded-xl bg-cyan-50 p-2.5 text-cyan-700"><GraduationCap className="size-5" aria-hidden="true" /></div>
+            <div>
+              <p className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-cyan-600">Presentación académica</p>
+              <h2 id="project-info-title" className="text-2xl font-bold tracking-tight text-[#0b2859]">Información del proyecto</h2>
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4">
+              <div className="rounded-xl bg-white p-2 text-[#1261b6] shadow-sm"><UserRound className="size-5" aria-hidden="true" /></div>
+              <div><p className="text-xs font-bold uppercase tracking-wider text-slate-400">Profesor</p><p className="mt-1 font-semibold text-[#0b2859]">Ing. Gabriel Griffin</p></div>
+            </div>
+            <div className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4">
+              <div className="rounded-xl bg-white p-2 text-[#1261b6] shadow-sm"><UsersRound className="size-5" aria-hidden="true" /></div>
+              <div><p className="text-xs font-bold uppercase tracking-wider text-slate-400">Grupo #4 — Integrantes</p><ul className="mt-1 flex flex-col gap-1 font-semibold text-[#0b2859]"><li>Franklin De Jesús Tinoco</li><li>Arelys León Hernández</li><li>Franklin Ossniel Rivas Díaz</li></ul></div>
+            </div>
+          </div>
+        </section>
 
         {result && <section className="animate-in fade-in slide-in-from-bottom-3 duration-500" aria-labelledby="result-title">
           <div className="mb-5 flex flex-col justify-between gap-3 sm:flex-row sm:items-end"><div><p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-cyan-600">Resultado de la operación</p><h2 id="result-title" className="text-2xl font-bold tracking-tight text-[#0b2859]">Desglose de billetes</h2></div><div className="flex items-center gap-2 text-sm font-semibold text-emerald-700"><CheckCircle2 className="size-5" aria-hidden="true" /> Retiro calculado correctamente</div></div>
