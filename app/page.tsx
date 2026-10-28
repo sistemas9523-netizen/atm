@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useMemo, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import {
@@ -9,9 +10,11 @@ import {
   Clock3,
   Eraser,
   History,
-  Landmark,
   Lightbulb,
   LoaderCircle,
+  GraduationCap,
+  UserRound,
+  UsersRound,
   RotateCcw,
   Sparkles,
   WalletCards,
@@ -81,11 +84,16 @@ export default function Page() {
     <main className="min-h-screen bg-[#f5f8fc] text-slate-950">
       <header className="border-b border-slate-200/80 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-5 lg:px-8">
-          <div className="flex items-center gap-3">
-            <div className="flex size-11 items-center justify-center rounded-2xl bg-[#0b2859] text-white shadow-lg shadow-blue-950/15">
-              <Landmark className="size-5" aria-hidden="true" />
-            </div>
-            <div>
+          <div className="flex min-w-0 items-center gap-3">
+            <Image
+              src="/images/uraccan-logo.png"
+              alt="Universidad de las Regiones Autónomas de la Costa Caribe Nicaragüense"
+              width={300}
+              height={160}
+              priority
+              className="h-14 w-auto shrink-0 object-contain sm:h-16"
+            />
+            <div className="min-w-0">
               <div className="flex items-center gap-2">
                 <h1 className="text-lg font-black tracking-[0.18em] text-[#0b2859]">ATM GREEDY</h1>
                 <span className="hidden rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700 sm:inline-flex">Sistema operativo</span>
@@ -130,6 +138,26 @@ export default function Page() {
           </section>
         </div>
 
+        <section className="mb-8 rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8" aria-labelledby="project-info-title">
+          <div className="mb-6 flex items-start gap-3">
+            <div className="rounded-xl bg-cyan-50 p-2.5 text-cyan-700"><GraduationCap className="size-5" aria-hidden="true" /></div>
+            <div>
+              <p className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-cyan-600">Presentación académica</p>
+              <h2 id="project-info-title" className="text-2xl font-bold tracking-tight text-[#0b2859]">Información del proyecto</h2>
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4">
+              <div className="rounded-xl bg-white p-2 text-[#1261b6] shadow-sm"><UserRound className="size-5" aria-hidden="true" /></div>
+              <div><p className="text-xs font-bold uppercase tracking-wider text-slate-400">Profesor</p><p className="mt-1 font-semibold text-[#0b2859]">Ing. Gabriel Griffin</p></div>
+            </div>
+            <div className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4">
+              <div className="rounded-xl bg-white p-2 text-[#1261b6] shadow-sm"><UsersRound className="size-5" aria-hidden="true" /></div>
+              <div><p className="text-xs font-bold uppercase tracking-wider text-slate-400">Grupo #4 — Integrantes</p><ul className="mt-1 flex flex-col gap-1 font-semibold text-[#0b2859]"><li>Franklin De Jesús Tinoco</li><li>Arelys León Hernández</li><li>Franklin Ossniel Rivas Díaz</li></ul></div>
+            </div>
+          </div>
+        </section>
+
         {result && <section className="animate-in fade-in slide-in-from-bottom-3 duration-500" aria-labelledby="result-title">
           <div className="mb-5 flex flex-col justify-between gap-3 sm:flex-row sm:items-end"><div><p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-cyan-600">Resultado de la operación</p><h2 id="result-title" className="text-2xl font-bold tracking-tight text-[#0b2859]">Desglose de billetes</h2></div><div className="flex items-center gap-2 text-sm font-semibold text-emerald-700"><CheckCircle2 className="size-5" aria-hidden="true" /> Retiro calculado correctamente</div></div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{visibleBreakdown.map(({ denomination, quantity }) => <article key={denomination} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"><div className="mb-5 flex items-start justify-between"><div className="flex size-11 items-center justify-center rounded-xl bg-blue-50 text-[#1261b6]"><Banknote className="size-5" aria-hidden="true" /></div><span className="rounded-full bg-cyan-50 px-2.5 py-1 text-xs font-bold text-cyan-700">x{quantity}</span></div><p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Denominación</p><p className="mt-1 text-2xl font-black text-[#0b2859]">${formatMoney(denomination)}</p><p className="mt-2 text-xs text-slate-500">{quantity === 1 ? '1 billete entregado' : `${quantity} billetes entregados`}</p></article>)}</div>
@@ -140,7 +168,7 @@ export default function Page() {
 
         {!result && <div className="mt-8 rounded-2xl border border-dashed border-slate-300 bg-white/60 p-5 text-center text-sm text-slate-500">Ingresa un monto y calcula tu retiro para ver el desglose paso a paso.</div>}
       </div>
-      <footer className="border-t border-slate-200 bg-white"><div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between lg:px-8"><span>ATM Greedy · Proyecto de Ingeniería en Sistemas</span><span>Simulador local · Sin conexión a cajeros reales</span></div></footer>
+      <footer className="border-t border-slate-200 bg-white"><div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between lg:px-8"><span>Proyecto académico de Ingeniería en Sistemas</span><span>Simulador local · Sin conexión a cajeros reales</span></div></footer>
     </main>
   )
 }
