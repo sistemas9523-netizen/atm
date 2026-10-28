@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useMemo, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import {
@@ -9,7 +10,6 @@ import {
   Clock3,
   Eraser,
   History,
-  Landmark,
   Lightbulb,
   LoaderCircle,
   RotateCcw,
@@ -81,11 +81,16 @@ export default function Page() {
     <main className="min-h-screen bg-[#f5f8fc] text-slate-950">
       <header className="border-b border-slate-200/80 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-5 lg:px-8">
-          <div className="flex items-center gap-3">
-            <div className="flex size-11 items-center justify-center rounded-2xl bg-[#0b2859] text-white shadow-lg shadow-blue-950/15">
-              <Landmark className="size-5" aria-hidden="true" />
-            </div>
-            <div>
+          <div className="flex min-w-0 items-center gap-3">
+            <Image
+              src="/images/uraccan-logo.png"
+              alt="Universidad de las Regiones Autónomas de la Costa Caribe Nicaragüense"
+              width={300}
+              height={160}
+              priority
+              className="h-14 w-auto shrink-0 object-contain sm:h-16"
+            />
+            <div className="min-w-0">
               <div className="flex items-center gap-2">
                 <h1 className="text-lg font-black tracking-[0.18em] text-[#0b2859]">ATM GREEDY</h1>
                 <span className="hidden rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700 sm:inline-flex">Sistema operativo</span>
@@ -140,7 +145,7 @@ export default function Page() {
 
         {!result && <div className="mt-8 rounded-2xl border border-dashed border-slate-300 bg-white/60 p-5 text-center text-sm text-slate-500">Ingresa un monto y calcula tu retiro para ver el desglose paso a paso.</div>}
       </div>
-      <footer className="border-t border-slate-200 bg-white"><div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between lg:px-8"><span>ATM Greedy · Proyecto de Ingeniería en Sistemas</span><span>Simulador local · Sin conexión a cajeros reales</span></div></footer>
+      <footer className="border-t border-slate-200 bg-white"><div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between lg:px-8"><span>Proyecto académico de Ingeniería en Sistemas</span><span>Simulador local · Sin conexión a cajeros reales</span></div></footer>
     </main>
   )
 }
